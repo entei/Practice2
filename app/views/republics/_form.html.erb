@@ -1,0 +1,17 @@
+<%= form_for(@republic) do |f| %>
+  <% if @republic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@republic.errors.count, "error") %> prohibited this republic from being saved:</h2>
+
+      <ul>
+      <% @republic.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
