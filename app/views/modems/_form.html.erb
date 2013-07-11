@@ -1,0 +1,70 @@
+<%= form_for([:station, @modem]) do |f| %>
+    <% if @modem.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@modem.errors.count, "error") %> prohibited this modem from being saved:</h2>
+
+          <ul>
+            <% @modem.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :"Модель" %>
+
+      <%= f.text_field :model %>
+    </div>
+    <div class="field">
+      <%= f.label :"Тип модема" %>
+      
+      <%= f.select :modem_type, [['Аналоговый'],
+            ['Цифровой']]%>
+    </div>
+    <div class="field">
+      <%= f.label :"Скорость" %>
+      <%= f.select :speed, [['до 128'],
+            ['от 9600 до 19200'],
+            ['от 19200 до 33600'],
+            ['от 33600 до 56000'],
+            ['от 56000']]%>
+
+    </div>
+    <div class="field">
+      <%= f.label :"Источник приобретения" %>
+      <%= f.select :source, [['Республиканский бюджет'],
+            ['Местный бюджет'],
+            ['На балансе сторонней организации'],
+            ['Передано безвозмездно'],
+            ['Получено из других подразделений'],
+            ['Спонсорские средства '],
+            ['Платные услуги']]%>
+    </div>
+    <div class="field">
+      <%= f.label :"Дата ввода в эксплуатацию" %>
+
+      <%= f.date_select :commissioning %>
+    </div>
+    <div class="field">
+      <%= f.label :"Какие задачи выполняет" %>
+
+      <%= f.text_area :task %>
+    </div>
+    <div class="field">
+      <%= f.label :"Дата списания" %>
+
+      <%= f.date_select :decommissioning %>
+    </div>
+    <div class="field">
+      <%= f.label :"Примечание" %>
+      <%= f.text_area :comment %>
+    </div>
+    <div class="field">
+
+      <%= f.hidden_field :station_id, :value => @station_id %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

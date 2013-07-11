@@ -1,0 +1,54 @@
+@import "bootstrap";
+
+/*footer*/
+ footer{
+   margin-top: 45px;
+   padding-top: 5px;
+   border-top: 1px solid #eaeaea;
+   color: #999;
+ }
+footer small {
+  float: left;
+}
+
+footer right{
+  float: right;
+}
+
+/*error forms*/
+#error_explanarion{
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+  }
+  ul{
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+}
+
+search_bar{
+  margin: 10px 50px 10px 0px;
+}
+
+.ctrl{
+ width:50px;
+}
+
+textarea
+{
+  resize: none;
+  width:400px;
+  height:100px;
+}
+p {
+  width:400pxx;
+}

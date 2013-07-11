@@ -1,0 +1,43 @@
+<div class="input-append">
+<%= form_tag stations_path, :method => 'get' do %>
+
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil, :class => "btn btn" %>
+    </p>
+<% end %>
+  </div>
+
+
+<div class="alert alert-info ">
+  <h2>Список отделений</h2>
+</div>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>Название</th>
+    <th>Район</th>
+    <th>Действия</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <% @stations.each do |station| %>
+
+      <tr>
+        <td><%= station.name %></td>
+        <td><%= station.district_id %></td>
+
+
+        <td class="ctrl"><%= link_to 'Просмотр', station %></td>
+        <td class="ctrl"><%= link_to 'Удалить', station, method: :delete, data: {confirm: 'Вы уверены?'} %></td>
+      </tr>
+      </tbody>
+  <% end %>
+
+  </table>
+
+<br/>
+
+<%= link_to 'Новое отделение', new_station_path, :class => "btn" %>
+

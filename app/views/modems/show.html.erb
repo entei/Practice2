@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Модель:</b>
+  <%= @modem.model %>
+</p>
+
+<p>
+  <b>Тип модема:</b>
+  <%= @modem.modem_type %>
+</p>
+
+<p>
+  <b>Скорость:</b>
+  <%= @modem.speed %>
+</p>
+
+<p>
+  <b>Источник приобретения:</b>
+  <%= @modem.source %>
+</p>
+
+<p>
+  <b>Дата ввода в эксплуатацию:</b>
+  <%= @modem.commissioning %>
+</p>
+
+<p>
+  <b>Какие задачи выполняет:</b>
+  <%= simple_format @modem.task %>
+</p>
+
+<p>
+  <b>Дата списания:</b>
+  <%= @modem.decommissioning %>
+</p>
+
+<p>
+  <b>Примечание:</b>
+  <%= simple_format @modem.comment %>
+</p>
+
+
+
+<%= link_to 'Редактировать', edit_station_modem_path(@modem.station_id, @modem) %> |
+<%= link_to 'Назад', station_path(@station_id) %>

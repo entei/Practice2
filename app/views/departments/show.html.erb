@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Название:</b>
+  <%= @department.name %>
+</p>
+
+<p>
+  <b>Тип:</b>
+  <%= @department.type %>
+</p>
+
+<p>
+  <b>Район:</b>
+  <%= @department.district_id %>
+</p>
+
+
+<%= link_to 'Редактировать', edit_department_path(@department) %> |
+<%= link_to 'Назад', departments_path %>

@@ -1,0 +1,22 @@
+
+<% if notice %>
+<div class="alert alert-error">
+
+    <p id="alert"><%= notice %> </p>
+    </div>
+<% end %>
+
+<%= form_tag do %>
+    <legend>Войдите, пожалуйста</legend>
+    <div>
+      <%= label_tag :name, 'Логин' %>
+      <%= text_field_tag :name, params[:name] %>
+    </div>
+    <div>
+      <%= label_tag :password, 'Пароль' %>
+      <%= password_field_tag :password, params[:password] %>
+    </div>
+    <div>
+      <%= submit_tag "Login" %>
+    </div>
+<% end %>

@@ -1,0 +1,84 @@
+<%= form_for([:station, @printer]) do |f| %>
+    <% if @printer.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@printer.errors.count, "error") %> prohibited this printer from being saved:</h2>
+
+          <ul>
+            <% @printer.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :"Устройство" %>
+      <%= f.select :device, [['Принтер'],
+      ['Сканер'],
+      ['Копир'],
+      ['МФУ']]%>  
+      
+    </div>
+    <div class="field">
+      <%= f.label :"Модель" %>
+
+      <%= f.text_field :printer_model %>
+    </div>
+    <div class="field">
+      <%= f.label :"Тип ПУ" %>
+       <%= f.select :printer_type, [['Планшетный'],
+      ['Лазерный'],
+      ['Струйный'],
+      ['Матричный']]%>  
+      
+    </div>
+    <div class="field">
+      <%= f.label :"Формат" %>
+      <%= f.select :page_format, [['A3'],
+      ['A4']]%>  
+      
+    </div>
+    <div class="field">
+      <%= f.label :"Цветность" %>
+      <%= f.select :chroma, [['Цветной'],
+      ['Черно-белый']]%>  
+    </div>
+    <div class="field">
+      <%= f.label :"Источник приобретения" %>
+      <%= f.select :source, [['Республиканский бюджет'],
+      ['Местный бюджет'],
+      ['На балансе сторонней организации'],
+      ['Передано безвозмездно'],
+      ['Получено из других подразделений'],
+      ['Спонсорские средства '],
+      ['Платные услуги']]%>  
+      
+    </div>
+    <div class="field">
+      <%= f.label :"дата ввода в эксплуатацию" %>
+
+      <%= f.date_select  :commissioning %>
+    </div>
+    <div class="field">
+      <%= f.label :"какие задачи выполняет" %>
+
+      <%= f.text_area :task %>
+    </div>
+    <div class="field">
+      <%= f.label :"дата списания" %>
+
+      <%= f.date_select :decommissioning %>
+    </div>
+    <div class="field">
+      <%= f.label :"Примечание" %>
+
+      <%= f.text_area :comment %>
+    </div>
+    <div class="field">
+
+      <%= f.hidden_field :station_id, :value => @station_id %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

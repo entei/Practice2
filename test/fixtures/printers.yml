@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  device: MyString
+  printer_model: MyString
+  printer_type: MyString
+  page_format: MyString
+  chroma: MyString
+  source: MyString
+  commissioning: MyString
+  task: MyString
+  decommissioning: 2013-02-12
+  comment: MyString
+
+two:
+  device: MyString
+  printer_model: MyString
+  printer_type: MyString
+  page_format: MyString
+  chroma: MyString
+  source: MyString
+  commissioning: MyString
+  task: MyString
+  decommissioning: 2013-02-12
+  comment: MyString

@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+<div class="alert alert-info ">
+  <h2>
+    <b>Область:</b>
+    <%= @region.name %>
+  </h2>
+
+ <h4>
+ </h4>
+</div>
+
+<%= link_to 'Добавить СВТ', new_region_computer_path(@region), :class => "btn" %>
+<%= link_to 'Добавить другое оборудование', new_region_device_path(@region), :class => "btn" %>
+<%= link_to 'Добавить ПУ', new_region_printer_path(@region), :class => "btn" %>
+<%= link_to 'Добавить Модем', new_region_modem_path(@region) , :class => "btn"%>   </br>
+<%= link_to 'Edit', edit_region_path(@region) %> |
+<%= link_to 'Back', regions_path %>

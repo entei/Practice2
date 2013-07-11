@@ -1,0 +1,29 @@
+<h1>Listing computers</h1>
+
+
+<% if @computers.any? %>
+    СВТ
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Компьютер</th>
+        <th>Тип ЭВМ</th>
+        <th>ID отделения</th></th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <% @computers.each do |c| %>
+          <tr>
+            <td><%= c.computer_model %></td>
+            <td> <%= c.comp_type %> </td>
+            <td> <%= c.station_id %> </td>
+            <td> <%= link_to "просмотр", station_computer_path(@station, c) %></td>
+            <td><%= link_to "редактировать", edit_station_computer_path(@station, c) %></td>
+            <td><%= link_to "удалить", '#' %></td>
+          </tr>
+          </tbody>
+      <% end %>
+      </table>
+<% end %>
+

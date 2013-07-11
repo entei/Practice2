@@ -1,0 +1,15 @@
+<% if @division.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-error">
+        <%= pluralize(@division.errors.count, "error") %>
+        prohibited this user from being saved:
+      </div>
+
+      <p>There were problems with the following fields:</p>
+      <ul>
+        <% @division.errors.full_messages.each do |msg| %>
+            <li>*<%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>

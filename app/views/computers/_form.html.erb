@@ -1,0 +1,101 @@
+<%= form_for([:station, @computer]) do |f| %>
+    <% if @computer.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@computer.errors.count, "error") %> prohibited this computer from being saved:</h2>
+
+          <ul>
+            <% @computer.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :"Компьютер" %>
+
+      <%= f.text_field :computer_model %>
+    </div>
+    <div class="field">
+      <%= f.label :"Тип ЭВМ" %>
+        <%= f.select :comp_type, [['персональная'],
+            ['многопользовательская'],
+            ['мобильная'],
+            ['рабочая станция']]%>
+
+    </div>
+    <div class="field">
+      <%= f.label :"Класс ЭВМ" %>
+        <%= f.select :comp_class, [['1'],
+            ['2'],
+            ['3'],
+            ['4'],
+            ['5'],
+            ['6']]%>
+    </div>
+    <div class="field">
+      <%= f.label :"Платформа" %>
+      <%= f.select :platform, [['386'],
+            ['486'],
+            ['Pentium'],
+            ['Celeron'],
+            ['AMD']]%>
+    </div>
+    <div class="field">
+      <%= f.label :"Процессор" %>
+
+      <%= f.text_field :processor %>
+    </div>
+    <div class="field">
+      <%= f.label :"Память" %>
+
+      <%= f.text_field :memory %>
+    </div>
+    <div class="field">
+      <%= f.label :"Жесткий диск" %>
+
+      <%= f.text_field :hdd %>
+    </div>
+    <div class="field">
+      <%= f.label :"Монитор" %>
+
+      <%= f.text_field :display %>
+    </div>
+    <div class="field">
+      <%= f.label :"Источник приобретения" %>
+      <%= f.select :source, [['Республиканский бюджет'],
+            ['Местный бюджет'],
+            ['На балансе сторонней организации'],
+            ['Передано безвозмездно'],
+            ['Получено из других подразделений'],
+            ['Спонсорские средства '],
+            ['Платные услуги']]%>
+    </div>
+    <div class="field">
+      <%= f.label :"Дата ввода в эксплуатацию" %>
+
+      <%= f.date_select :commissioning %>
+    </div>
+    <div class="field">
+      <%= f.label :"Какие задачи выполняет" %>
+
+      <%= f.text_area :task %>
+    </div>
+    <div class="field">
+      <%= f.label :"Дата списания" %>
+
+      <%= f.date_select :decommissioning %>
+    </div>
+    <div class="field">
+      <%= f.label :"Примечание" %>
+
+      <%= f.text_area :comment %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :station_id, :value => @station_id %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  model: MyString
+  modem_type: MyString
+  speed: MyString
+  source: MyString
+  commissioning: 2013-02-12
+  task: MyString
+  decommissioning: 2013-02-12
+  comment: MyString
+  station_id: 1
+
+two:
+  model: MyString
+  modem_type: MyString
+  speed: MyString
+  source: MyString
+  commissioning: 2013-02-12
+  task: MyString
+  decommissioning: 2013-02-12
+  comment: MyString
+  station_id: 1

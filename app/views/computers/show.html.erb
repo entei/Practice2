@@ -1,0 +1,70 @@
+<div class="alert alert-success"><%= notice %></div>
+
+<p>
+  <b>Computer model:</b>
+  <%= @computer.computer_model %>
+</p>
+
+<p>
+  <b>Comp type:</b>
+  <%= @computer.comp_type %>
+</p>
+
+<p>
+  <b>Comp class:</b>
+  <%= @computer.comp_class %>
+</p>
+
+<p>
+  <b>Platform:</b>
+  <%= @computer.platform %>
+</p>
+
+<p>
+  <b>Processor:</b>
+  <%= @computer.processor %>
+</p>
+
+<p>
+  <b>Memory:</b>
+  <%= @computer.memory %>
+</p>
+
+<p>
+  <b>Hdd:</b>
+  <%= @computer.hdd %>
+</p>
+
+<p>
+  <b>Display:</b>
+  <%= @computer.display %>
+</p>
+
+<p>
+  <b>Source:</b>
+  <%= @computer.source %>
+</p>
+
+<p>
+  <b>Commissioning:</b>
+  <%= @computer.commissioning %>
+</p>
+
+<p>
+  <b>Task:</b>
+  <%= simple_format @computer.task %>
+</p>
+
+<p>
+  <b>Decommissioning:</b>
+  <%= @computer.decommissioning %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= simple_format(@computer.comment) %>
+</p>
+
+
+<%= link_to 'Edit', edit_station_computer_path(@computer.station_id, @computer)%> |
+<%= link_to 'Back', station_path(@station_id) %>

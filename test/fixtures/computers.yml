@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  computer_model: MyString
+  comp_type: MyString
+  comp_class: MyString
+  platform: MyString
+  processor: MyString
+  memory: 1.5
+  hdd: 1.5
+  display: MyString
+  source: MyString
+  commissioning: 2013-02-12
+  task: MyString
+  decommissioning: 2013-02-12
+  comment: MyString
+
+two:
+  computer_model: MyString
+  comp_type: MyString
+  comp_class: MyString
+  platform: MyString
+  processor: MyString
+  memory: 1.5
+  hdd: 1.5
+  display: MyString
+  source: MyString
+  commissioning: 2013-02-12
+  task: MyString
+  decommissioning: 2013-02-12
+  comment: MyString
