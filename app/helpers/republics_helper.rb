@@ -1,0 +1,2 @@
+module RepublicsHelper
+end

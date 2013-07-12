@@ -1,0 +1,85 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+ $('.spoiler_links').click(function(){
+  $(this).parent().children('div.spoiler_body').toggle('normal');
+  return false;
+ });
+});
+</script>
+
+<style type="text/css">
+ .spoiler_body {display:none; cursor:pointer;}
+</style>
+
+
+
+<br/>
+
+  <div>
+     <a href="" class="spoiler_links">Республика</a>
+     <div class="spoiler_body">
+
+
+          <% @regions.each do |region| %>
+          <div>
+                      <a href="" class="spoiler_links"> --><%= region.name %>   область   <%= link_to ' [детали]', region %></a>
+                        <div class="spoiler_body">
+
+
+                            
+                                <% @districts.find_all{|a|a.region_id == region.id}.each do |district| %>
+                                <div>
+                                <a href="" class="spoiler_links"> ------><%=  district.name %> район   <%= link_to ' [детали]', district %></a>
+                                  <div class="spoiler_body">
+
+
+                                        <% @stations.find_all{|a|a.district_id == district.id}.each do |station| %>
+                                        <div>
+                                        <a href="" class="spoiler_links"> ------------><%=  station.name %>   <%= link_to ' [детали]', station %></a>
+                                          <div class="spoiler_body">
+                                          lol
+                                          </div>
+                                        </div>
+
+                                        <% end %>
+
+                                   
+
+
+
+                                                     
+
+                                    
+                                    
+                                  </div>
+                                </div>
+                                <% end %>
+                        
+
+
+
+                        </div>
+                      </div>
+    
+          <% end %>
+
+     </div>
+  </div>
+
+<% @republics.each do |republic| %>
+  <tr>
+    <td><%= link_to 'Show', republic %></td>
+    <td><%= link_to 'Edit', edit_republic_path(republic) %></td>
+    <td><%= link_to 'Destroy', republic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Новая область', new_region_path %>
+<%= link_to 'Новый район', new_district_path %>
+<%= link_to 'Новое отделение', new_station_path %>
+<!--
+<%= link_to 'New Republic', new_republic_path %>-->
