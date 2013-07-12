@@ -15,7 +15,9 @@ class DevicesController < ApplicationController
   # GET /devices/1.json
   def show
     @device = Device.find(params[:id])
+        @region_id = params[:region_id]
     @station_id = params[:station_id]
+    @district_id = params[:district_id]
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @device }
@@ -25,9 +27,10 @@ class DevicesController < ApplicationController
   # GET /devices/new
   # GET /devices/new.json
   def new
-    @station_id = params[:station_id]
     @device = Device.new
-
+    @region_id = params[:region_id]
+    @station_id = params[:station_id]
+    @district_id = params[:district_id]
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @device }
@@ -43,13 +46,19 @@ class DevicesController < ApplicationController
   # POST /devices
   # POST /devices.json
   def create
-    @station = Station.find_by_id(params[:station_id])
-    @device = @station.devices.new(params[:device])
+   
+    @device = Device.new(params[:device])
+
+     @region = Region.find_by_id(@device.region_id)
+    @district = District.find_by_id(@device.district_id)
+    @station = Station.find_by_id(@device.station_id)
+
+    @node = @region || @district || @station #look for where we came
 
     respond_to do |format|
       if @device.save
         #redirect_to station_path(@station)
-        format.html { redirect_to station_path(@station), notice: 'Device was successfully created.' }
+        format.html { redirect_to @node, notice: 'Device was successfully created.' }
         format.json { render json: @device, status: :created, location: @device }
       else
         format.html { render action: "new" }

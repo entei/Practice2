@@ -1,24 +1,18 @@
 <p id="notice" xmlns="http://www.w3.org/1999/html"><%= notice %></p>
-<div class="alert alert-info ">
+<legend>
   <h2>
-    <b>Название:</b>
     <%= @station.name %>
   </h2>
 
   <h4>
     <b>Район:</b>
-    <%= @station.district_id %>
+    <%= @district.name %>
   </h4>
-
-</div>
+</legend>
 <!-----------list of device---------->
-
-
 </br>
 
-
 <% if @modems.any? %>
-
     <div class="alert alert-success">
       <strong>МОДЕМЫ</strong>
     </div>
@@ -43,8 +37,8 @@
           <td><%= modem.modem_type %></td>
           <td> <%= modem.speed %> </td>
 
-          <td class="ctrl"> <%= link_to "просмотр", station_modem_path(@station, modem) %></td>
-          <td class="ctrl"><%= link_to "редактировать", edit_station_modem_path(@station, modem) %></td>
+          <td class="ctrl"> <%= link_to "просмотр", modem_path(modem) %></td>
+          <td class="ctrl"><%= link_to "редактировать", edit_modem_path(modem) %></td>
 
           </tr>
           </tbody>
@@ -78,8 +72,8 @@
           <td><%= pr.device %></td>
           <td> <%= pr.printer_type %> </td>
 
-          <td class="ctrl"> <%= link_to "просмотр", station_printer_path(@station, pr) %></td>
-          <td class="ctrl"><%= link_to "редактировать", edit_station_printer_path(@station, pr) %></td>
+          <td class="ctrl"> <%= link_to "просмотр", printer_path(pr) %></td>
+          <td class="ctrl"><%= link_to "редактировать", edit_printer_path(pr) %></td>
 
           </tr>
           </tbody>
@@ -112,8 +106,8 @@
           <td><%= c.platform %></td>
           <td> <%= c.comp_type %> </td>
 
-          <td class="ctrl"> <%= link_to "просмотр", station_computer_path(@station, c) %></td>
-          <td class="ctrl"><%= link_to "редактировать", edit_station_computer_path(@station, c) %></td>
+          <td class="ctrl"> <%= link_to "просмотр", computer_path(c) %></td>
+          <td class="ctrl"><%= link_to "редактировать", edit_computer_path(c) %></td>
 
           </tr>
           </tbody>
@@ -147,8 +141,8 @@
           <td><%= d.device_type %></td>
           <td> <%= d.device_model %> </td>
 
-          <td class="ctrl"> <%= link_to "просмотр", station_device_path(@station, d) %></td>
-          <td class="ctrl"><%= link_to "редактировать", edit_station_device_path(@station, d) %></td>
+          <td class="ctrl"> <%= link_to "просмотр", device_path( d) %></td>
+          <td class="ctrl"><%= link_to "редактировать", edit_device_path( d) %></td>
 
           </tr>
           </tbody>
@@ -160,9 +154,9 @@
 
 <!----------------------->
 
-<%= link_to 'Добавить СВТ', new_station_computer_path(@station), :class => "btn" %>
-<%= link_to 'Добавить другое оборудование', new_station_device_path(@station), :class => "btn" %>
-<%= link_to 'Добавить ПУ', new_station_printer_path(@station), :class => "btn" %>
-<%= link_to 'Добавить Модем', new_station_modem_path(@station) , :class => "btn"%>   </br>
+<%= link_to 'Добавить СВТ', new_computer_path(:station_id => @station), :class => "btn" %>
+<%= link_to 'Добавить другое оборудование', new_device_path(:station_id => @station), :class => "btn" %>
+<%= link_to 'Добавить ПУ', new_printer_path(:station_id => @station), :class => "btn" %>
+<%= link_to 'Добавить Модем', new_modem_path(:station_id => @station) , :class => "btn"%>   </br>
 <%= link_to 'Редактировать', edit_station_path(@station) %>|
 <%= link_to 'Назад', stations_path %>

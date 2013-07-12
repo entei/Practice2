@@ -1,8 +1,7 @@
-<div class="alert alert-info ">
-<h2>Добавить новое отделение</h2>
- </div>
-</br>
+<legend>
+<%= @district.name %> ->Добавить новое отделение
+ </legend>
 
 <%= render 'form' %>
 
-<%= link_to 'Назад', stations_path %>
+<%= link_to 'Назад', district_path(@district_id) %>

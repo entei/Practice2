@@ -17,8 +17,7 @@
     <%= f.text_field :name %>
   </div>
     <div class="field">
-      <%= f.label :"район" %>
-      <%= f.text_field :name %>
+      <%= f.hidden_field :district_id, :value => @district_id %>
     </div>
 
   <div class="actions">

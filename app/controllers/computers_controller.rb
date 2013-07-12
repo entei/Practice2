@@ -25,7 +25,9 @@ class ComputersController < ApplicationController
   # GET /computers/new
   # GET /computers/new.json
   def new
+    @region_id = params[:region_id]
     @station_id = params[:station_id]
+    @district_id = params[:district_id]
     @computer = Computer.new
 
     #respond_to do |format|
@@ -43,14 +45,22 @@ class ComputersController < ApplicationController
   # POST /computers
   # POST /computers.json
   def create
-    @station = Station.find_by_id(params[:station_id])
-    @computer = @station.computers.new(params[:computer])
+  #  @computer = @station.computers.new(params[:computer])
+    @computer = Computer.new(params[:computer])
+
+    @region = Region.find_by_id(@computer.region_id)
+    @district = District.find_by_id(@computer.district_id)
+    @station = Station.find_by_id(@computer.station_id)
+
+    @node = @region || @district || @station #look for where we came
+
+ # p "#{@computer.station_id} STATION_ID"
 
     respond_to do |format|
       if @computer.save
-        # redirect_to station_path(@station)
-        format.html { redirect_to station_path(@station), notice: 'Computer was successfully created.' }
-        format.json { render json: @computer, status: :created, location: @computer }
+        #redirect_to  station_path(2)
+        format.html { redirect_to @node, notice: 'Computer was successfully created.' }
+        format.json { head :no_content }
       else
         format.html { render action: "new" }
         format.json { render json: @computer.errors, status: :unprocessable_entity }
@@ -65,8 +75,7 @@ class ComputersController < ApplicationController
 
     respond_to do |format|
       if @computer.update_attributes(params[:computer])
-        #redirect_to station_computer_path(@computer.station_id, @computer)
-        format.html { redirect_to station_computer_path(@computer.station_id, @computer), notice: 'Computer was successfully updated.' }
+        format.html { redirect_to computer_path(@computer), notice: 'Computer was successfully updated.' }
         format.json { head :no_content }
       else
         render action: "edit"

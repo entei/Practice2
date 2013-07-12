@@ -14,6 +14,12 @@ class DistrictsController < ApplicationController
   # GET /districts/1.json
   def show
     @district = District.find(params[:id])
+    @district_id = @district.id
+    @stations = @district.stations
+    @modems = @district.modems
+    @computers = @district.computers
+    @printers = @district.printers
+    @devices = @district.devices
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,11 +31,13 @@ class DistrictsController < ApplicationController
   # GET /districts/new.json
   def new
     @district = District.new
+    @region_id = params[:region_id]
+    @region = Region.find_by_id(@region_id)    
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @district }
-    end
+    # respond_to do |format|
+    #   format.html # new.html.erb
+    #   format.json { render json: @district }
+    # end
   end
 
   # GET /districts/1/edit
@@ -41,10 +49,11 @@ class DistrictsController < ApplicationController
   # POST /districts.json
   def create
     @district = District.new(params[:district])
+    @region = Region.find_by_id(@district.region_id)
 
     respond_to do |format|
       if @district.save
-        format.html { redirect_to @district, notice: 'District was successfully created.' }
+        format.html { redirect_to @region, notice: 'District was successfully created.' }
         format.json { render json: @district, status: :created, location: @district }
       else
         format.html { render action: "new" }

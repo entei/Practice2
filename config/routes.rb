@@ -1,9 +1,6 @@
 Practic::Application.routes.draw do
 
-  resources :regions
 
-
-  resources :districts
 
 
   get "static_pages/about"
@@ -18,13 +15,13 @@ Practic::Application.routes.draw do
       delete 'logout' => :destroy
     end
 
-  resources :stations do
-    resources :devices
-    resources :computers
-    resources :printers
-    resources :modems
-  end
-
+   resources :regions 
+   resources :districts
+   resources :stations 
+   resources :devices
+   resources :computers
+   resources :printers
+   resources :modems
 
   post "user/create"
   get "user/:id" => "User#show"

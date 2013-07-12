@@ -1,4 +1,4 @@
-<%= form_for([:station, @printer]) do |f| %>
+<%= form_for([@printer]) do |f| %>
     <% if @printer.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@printer.errors.count, "error") %> prohibited this printer from being saved:</h2>
@@ -74,9 +74,15 @@
 
       <%= f.text_area :comment %>
     </div>
+    <!-- hidden fields -->
     <div class="field">
-
-      <%= f.hidden_field :station_id, :value => @station_id %>
+      <%= f.text_field :region_id, :value => @region_id %>
+    </div>
+    <div class="field">
+      <%= f.text_field :district_id, :value => @district_id %>
+    </div>
+        <div class="field">
+      <%= f.text_field :station_id, :value => @station_id %>
     </div>
     <div class="actions">
       <%= f.submit %>

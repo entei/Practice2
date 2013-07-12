@@ -1,10 +1,178 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
+<legend>
   <%= @district.name %>
-</p>
+</legend>
+
+<!-- List of stations -->
+<strong>ПАСЧ района</strong>
+<table class="table table-bordered">
+      <thead>
+      <tr class="success">
+        <th>Название части</th>
+        <th>Действия</th>
+      </tr>
+      </thead>
+      <tbody>
+      	<% @stations.each do |station| %>
+      	 <tr>
+      	  <td><%= station.name %></td>
+      	  <td class="ctrl"> <%= link_to "просмотр", station_path(station) %></td>
+          <td class="ctrl"><%= link_to "редактировать", edit_station_path(station) %></td>
+      	 </tr>
+      	<% end %>
+      	</tbody>
+</table><br></br>
+<%= link_to 'Добавить отделение', new_station_path(:district_id => @district), :class => "btn" %><br></br>
+<!-----------list of device---------->
+
+<% if @modems.any? %>
+
+    <div class="alert alert-success">
+      <strong>МОДЕМЫ</strong>
+    </div>
+
+    <table class="table table-bordered">
+      <thead>
+      <tr class="success">
+        <th>Тип</th>
+        <th>Скорость</th>
+        <th>Действия</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <% @modems.each do |modem| %>
+          <% if modem.retirement? %>
+              <tr class="error">
+
+          <% else %>
+              <tr>
+          <% end %>
+          <td><%= modem.modem_type %></td>
+          <td> <%= modem.speed %> </td>
+
+          <td class="ctrl"> <%= link_to "просмотр", modem_path(modem) %></td>
+          <td class="ctrl"><%= link_to "редактировать", edit_modem_path(modem) %></td>
+
+          </tr>
+          </tbody>
+      <% end %>
+      </table>
+<% end %>
+
+<% if @printers.any? %>
+    <div class="alert alert-success">
+      <strong>ПЕЧАТНЫЕ УСТРОЙСТВА</strong>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Устройство</th>
+        <th>Тип</th>
+        <th>Действия</th>
+
+      </tr>
+      </thead>
+      <tbody>
+
+      <% @printers.each do |pr| %>
+          <% if pr.retirement? %>
+              <tr class="error">
+
+          <% else %>
+              <tr>
+          <% end %>
+
+          <td><%= pr.device %></td>
+          <td> <%= pr.printer_type %> </td>
+
+          <td class="ctrl"> <%= link_to "просмотр", printer_path(pr) %></td>
+          <td class="ctrl"><%= link_to "редактировать", edit_printer_path(pr) %></td>
+
+          </tr>
+          </tbody>
+      <% end %>
+      </table>
+<% end %>
+
+<% if @computers.any? %>
+    <div class="alert alert-success">
+      <strong>СВТ</strong>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Компьютер</th>
+        <th>Тип ЭВМ</th>
+        <th>Действия</th>
+
+      </tr>
+      </thead>
+      <tbody>
+
+      <% @computers.each do |c| %>
+          <% if c.retirement? %>
+              <tr class="error">
+          <% else %>
+              <tr>
+          <% end %>
+          <td><%= c.platform %></td>
+          <td> <%= c.comp_type %> </td>
+
+          <td class="ctrl"> <%= link_to "просмотр", computer_path(c) %></td>
+          <td class="ctrl"><%= link_to "редактировать", edit_computer_path(c) %></td>
+
+          </tr>
+          </tbody>
+      <% end %>
+      
+<% end %>
 
 
-<%= link_to 'Edit', edit_district_path(@district) %> |
-<%= link_to 'Back', districts_path %>
+<% if @devices.any? %>
+    <div class="alert alert-success">
+      <strong>ДРУГОЕ ОБОРУДОВАНИЕ</strong>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Тип</th>
+        <th>Модель</th>
+        <th>Действия</th>
+
+      </tr>
+      </thead>
+      <tbody>
+
+      <% @devices.each do |d| %>
+          <% if d.retirement? %>
+              <tr class="error">
+
+          <% else %>
+              <tr>
+
+          <% end %>
+          <td><%= d.device_type %></td>
+          <td> <%= d.device_model %> </td>
+
+          <td class="ctrl"> <%= link_to "просмотр", device_path(d) %></td>
+          <td class="ctrl"><%= link_to "редактировать", edit_device_path(d) %></td>
+
+          </tr>
+          </tbody>
+      <% end %>
+      
+<% end %>
+</table>
+<p>
+  <span class="badge badge-important"> </span> - закончен срок эксплуатации</p></br>
+<!----------------------->
+
+<%= link_to 'Добавить СВТ', new_computer_path(:district_id => @district_id), :class => "btn" %>
+<%= link_to 'Добавить другое оборудование', new_device_path(:district_id => @district_id), :class => "btn" %>
+<%= link_to 'Добавить ПУ', new_printer_path(:district_id => @district_id), :class => "btn" %>
+<%= link_to 'Добавить Модем', new_modem_path(:district_id => @district_id) , :class => "btn"%>   
+<br></br>
+<%= link_to 'Редактировать', edit_region_path(@district.region_id) %>|
+<%= link_to 'Назад', regions_path %>

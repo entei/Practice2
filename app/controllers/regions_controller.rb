@@ -15,7 +15,14 @@ class RegionsController < ApplicationController
   # GET /regions/1
   # GET /regions/1.json
   def show
+
     @region = Region.find(params[:id])
+    @districts = @region.districts
+
+    @modems = @region.modems.paginate(page: params[:page])
+    @printers = @region.printers.paginate(page: params[:page])
+    @devices = @region.devices.paginate(page: params[:page])
+    @computers = @region.computers.paginate(page: params[:page])
 
     respond_to do |format|
       format.html # show.html.erb

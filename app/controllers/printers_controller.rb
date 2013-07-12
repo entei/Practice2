@@ -16,8 +16,10 @@ class PrintersController < ApplicationController
   # GET /printers/1.json
   def show
     @printer = Printer.find(params[:id])
+
+    @region_id = params[:region_id]
     @station_id = params[:station_id]
-    #respond_to do |format|
+    @district_id = params[:district_id]    #respond_to do |format|
     #  format.html # show.html.erb
     #  format.json { render json: @printer }
     #end
@@ -27,7 +29,9 @@ class PrintersController < ApplicationController
   # GET /printers/new.json
   def new
     @printer = Printer.new
+      @region_id = params[:region_id]
     @station_id = params[:station_id]
+    @district_id = params[:district_id]
     #respond_to do |format|
     #  format.html # new.html.erb
     #  format.json { render json: @printer }
@@ -43,13 +47,18 @@ class PrintersController < ApplicationController
   # POST /printers
   # POST /printers.json
   def create
+    @printer = Printer.new(params[:printer])
 
-    @station = Station.find_by_id(params[:station_id])
-    @printer = @station.printers.new(params[:printer])
+     @region = Region.find_by_id(@printer.region_id)
+    @district = District.find_by_id(@printer.district_id)
+    @station = Station.find_by_id(@printer.station_id)
+
+    @node = @region || @district || @station #look for where we came
+
     respond_to do |format|
       if @printer.save
         # redirect_to station_path(@station)
-        format.html { redirect_to station_path(@station), notice: 'Printer was successfully created.' }
+        format.html { redirect_to @node, notice: 'Printer was successfully created.' }
         format.json { render json: @printer, status: :created, location: @printer }
       else
         format.html { render action: "new" }

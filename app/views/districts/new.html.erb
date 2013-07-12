@@ -1,5 +1,5 @@
-<h1>New district</h1>
+<legend><%=@region.name%> -> Добавить район </legend>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', districts_path %>
+<%= link_to 'Назад', region_path(@region_id) %>

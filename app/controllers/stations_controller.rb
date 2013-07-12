@@ -14,6 +14,7 @@ class StationsController < ApplicationController
   # GET /stations/1.json
   def show
     @station = Station.find(params[:id])
+    @district = District.find_by_id(@station.district_id)
     @modems = @station.modems.paginate(page: params[:page])
     @printers = @station.printers.paginate(page: params[:page])
     @devices = @station.devices.paginate(page: params[:page])
@@ -29,6 +30,8 @@ class StationsController < ApplicationController
   # GET /stations/new.json
   def new
     @station = Station.new
+    @district_id = params[:district_id]
+    @district = District.find_by_id(@district_id)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,11 +48,12 @@ class StationsController < ApplicationController
   # POST /stations.json
   def create
     @station = Station.new(params[:station])
-
+    @district = District.find_by_id(@station.district_id)
+    
     respond_to do |format|
       if @station.save
-        format.html { redirect_to @station, notice: 'Station was successfully created.' }
-        format.json { render json: @station, status: :created, location: @station }
+        format.html { redirect_to @district, notice: 'Station was successfully created.' }
+        format.json { render json: @district, status: :created, location: @district }
       else
         format.html { render action: "new" }
         format.json { render json: @station.errors, status: :unprocessable_entity }

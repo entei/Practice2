@@ -16,7 +16,9 @@ class ModemsController < ApplicationController
   # GET /modems/1.json
   def show
     @modem = Modem.find(params[:id])
+        @region_id = params[:region_id]
     @station_id = params[:station_id]
+    @district_id = params[:district_id]
 =begin
     respond_to do |format|
       format.html # show.html.erb
@@ -30,7 +32,10 @@ class ModemsController < ApplicationController
   # GET /modems/new.json
   def new
     @modem = Modem.new
-    @station_id = params[:station_id] #get station_id
+    @region_id = params[:region_id]
+    @station_id = params[:station_id]
+    @district_id = params[:district_id]
+   
 
     #------------------тут ошибка>
     #   respond_to do |format|
@@ -48,14 +53,18 @@ class ModemsController < ApplicationController
   # POST /modems
   # POST /modems.json
   def create
-    @station = Station.find_by_id(params[:station_id])
-    @modem = @station.modems.new(params[:modem])
+    
+    @modem = Modem.new(params[:modem])
+    @region = Region.find_by_id(@modem.region_id)
+    @district = District.find_by_id(@modem.district_id)
+    @station = Station.find_by_id(@modem.station_id)
 
+    @node = @region || @district || @station #look for where we came
 
     respond_to do |format|
       if @modem.save
         # redirect_to station_path(@station)
-        format.html { redirect_to station_path(@station), notice: 'Modem was successfully created.' }
+        format.html { redirect_to @node, notice: 'Modem was successfully created.' }
         format.json { render json: @modem, status: :created, location: @modem }
       else
         redirect_to station_path(@station)

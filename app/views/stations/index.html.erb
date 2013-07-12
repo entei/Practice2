@@ -9,9 +9,9 @@
   </div>
 
 
-<div class="alert alert-info ">
-  <h2>Список отделений</h2>
-</div>
+<legend>
+  <h2>Список всех отделений</h2>
+</legend>
 <table class="table table-bordered">
   <thead>
   <tr>
@@ -29,6 +29,7 @@
         <td><%= station.district_id %></td>
 
 
+
         <td class="ctrl"><%= link_to 'Просмотр', station %></td>
         <td class="ctrl"><%= link_to 'Удалить', station, method: :delete, data: {confirm: 'Вы уверены?'} %></td>
       </tr>
@@ -39,5 +40,5 @@
 
 <br/>
 
-<%= link_to 'Новое отделение', new_station_path, :class => "btn" %>
+<%= link_to 'На главную', root_path, :class => "btn" %>
 
