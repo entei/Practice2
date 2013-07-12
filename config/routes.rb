@@ -1,12 +1,12 @@
 Practic::Application.routes.draw do
 
-<<<<<<< HEAD
-=======
+#<<<<<<< HEAD
+#=======
   resources :republics
 
 
   resources :regions
->>>>>>> 98c83a483764cc4da04ffed10591d17307c3eacc
+#>>>>>>> 98c83a483764cc4da04ffed10591d17307c3eacc
 
 
 
