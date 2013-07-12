@@ -24,16 +24,11 @@ $(document).ready(function(){
           <% @regions.each do |region| %>
           <div>
                       <a href="" class="spoiler_links"> --><%= region.name %>   область   <%= link_to ' [детали]', region %></a>
-                        <div class="spoiler_body">
-
-
-                            
+                        <div class="spoiler_body">      
                                 <% @districts.find_all{|a|a.region_id == region.id}.each do |district| %>
                                 <div>
                                 <a href="" class="spoiler_links"> ------><%=  district.name %> район   <%= link_to ' [детали]', district %></a>
                                   <div class="spoiler_body">
-
-
                                         <% @stations.find_all{|a|a.district_id == district.id}.each do |station| %>
                                         <div>
                                         <a href="" class="spoiler_links"> ------------><%=  station.name %>   <%= link_to ' [детали]', station %></a>
@@ -44,19 +39,9 @@ $(document).ready(function(){
 
                                         <% end %>
 
-                                   
-
-
-
-                                                     
-
-                                    
-                                    
                                   </div>
                                 </div>
                                 <% end %>
-                        
-
 
 
                         </div>
@@ -79,7 +64,6 @@ $(document).ready(function(){
 <br />
 
 <%= link_to 'Новая область', new_region_path %>
-<%= link_to 'Новый район', new_district_path %>
-<%= link_to 'Новое отделение', new_station_path %>
+
 <!--
 <%= link_to 'New Republic', new_republic_path %>-->

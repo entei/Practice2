@@ -36,5 +36,8 @@
 </p>
 
 
-<%= link_to 'Редактировать', edit_device_path(@device) %> |
-<%= link_to 'Назад', station_path(@station_id) %>
+<% if @node %>
+  <%= link_to 'Назад', @node %>
+<% else %>
+  <%= link_to 'Назад', root_path %>
+<% end %>

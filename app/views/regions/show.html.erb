@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-<<<<<<< HEAD
 <legend>
   <h2>
     <b>Область:</b>
@@ -30,7 +29,7 @@
       <tr>
        <td><%= district.name %></td>
        <td class="ctrl"> <%= link_to "просмотр", district_path(district) %></td>
-       <td class="ctrl"><%= link_to "редактировать", edit_district_path(district) %></td>
+       <td class="ctrl"><%= link_to "редактировать", edit_district_path(district, :region_id => @region.id) %></td>
       </tr>
       <% end %>
    
@@ -65,7 +64,7 @@
           <td> <%= modem.speed %> </td>
 
           <td class="ctrl"> <%= link_to "просмотр", modem_path(modem) %></td>
-          <td class="ctrl"><%= link_to "редактировать", edit_modem_path(modem) %></td>
+          <td class="ctrl"><%= link_to "редактировать", edit_modem_path(modem, :region_id => @region.id) %></td>
 
           </tr>
           </tbody>
@@ -100,7 +99,7 @@
           <td> <%= pr.printer_type %> </td>
 
           <td class="ctrl"> <%= link_to "просмотр", printer_path(pr) %></td>
-          <td class="ctrl"><%= link_to "редактировать", edit_printer_path( pr) %></td>
+          <td class="ctrl"><%= link_to "редактировать", edit_printer_path( pr,:region_id => @region.id) %></td>
 
           </tr>
           </tbody>
@@ -133,7 +132,7 @@
           <td> <%= c.comp_type %> </td>
 
           <td class="ctrl"> <%= link_to "просмотр", computer_path(c) %></td>
-          <td class="ctrl"><%= link_to "редактировать", edit_computer_path(c) %></td>
+          <td class="ctrl"><%= link_to "редактировать", edit_computer_path(c, :region_id => @region.id) %></td>
 
           </tr>
           </tbody>
@@ -168,7 +167,7 @@
           <td> <%= d.device_model %> </td>
 
           <td class="ctrl"> <%= link_to "просмотр", device_path(d) %></td>
-          <td class="ctrl"><%= link_to "редактировать", edit_device_path(d) %></td>
+          <td class="ctrl"><%= link_to "редактировать", edit_device_path(d, :region_id => @region.id) %></td>
 
           </tr>
           </tbody>
@@ -185,16 +184,6 @@
 <%= link_to 'Добавить Модем', new_modem_path(:region_id => @region) , :class => "btn"%>   
 <br></br>
 <%= link_to 'Редактировать', edit_region_path(@region) %>|
-<%= link_to 'Назад', regions_path %>
-
-=======
-
-<p>
-  <b>Name:</b>
-  <%= @region.name %>
-</p>
+<%= link_to 'Назад', root_path %>
 
 
-<%= link_to 'Edit', edit_region_path(@region) %> |
-<%= link_to 'Back', regions_path %>
->>>>>>> 98c83a483764cc4da04ffed10591d17307c3eacc

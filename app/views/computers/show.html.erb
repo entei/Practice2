@@ -66,5 +66,9 @@
 </p>
 
 
-<%= link_to 'Edit', edit_computer_path(@computer)%> |
-<%= link_to 'Back', "#" %>
+<% if @node %>
+  <%= link_to 'Назад', @node %>
+<% else %>
+  <%= link_to 'Назад', root_path %>
+<% end %>
+

@@ -39,7 +39,9 @@ class ComputersController < ApplicationController
   # GET /computers/1/edit
   def edit
     @computer = Computer.find(params[:id])
+    @region_id = params[:region_id]
     @station_id = params[:station_id]
+    @district_id = params[:district_id]
   end
 
   # POST /computers
@@ -73,9 +75,15 @@ class ComputersController < ApplicationController
   def update
     @computer = Computer.find(params[:id])
 
+    @region = Region.find_by_id(@computer.region_id)
+    @district = District.find_by_id(@computer.district_id)
+    @station = Station.find_by_id(@computer.station_id)
+
+    @node = @region || @district || @station #look for where we came
+
     respond_to do |format|
       if @computer.update_attributes(params[:computer])
-        format.html { redirect_to computer_path(@computer), notice: 'Computer was successfully updated.' }
+        format.html { redirect_to @node, notice: 'Computer was successfully updated.' }
         format.json { head :no_content }
       else
         render action: "edit"
@@ -89,11 +97,16 @@ class ComputersController < ApplicationController
   # DELETE /computers/1.json
   def destroy
     @computer = Computer.find(params[:id])
-    @station_id = @computer.station_id
+   
+    @region = Region.find_by_id(@computer.region_id)
+    @district = District.find_by_id(@computer.district_id)
+    @station = Station.find_by_id(@computer.station_id)
+
+    @node = @region || @district || @station #look for where we came
     @computer.destroy
 
     respond_to do |format|
-      format.html { redirect_to station_path(@station_id) }
+      format.html { redirect_to @node }
       format.json { head :no_content }
     end
   end

@@ -29,7 +29,7 @@ class PrintersController < ApplicationController
   # GET /printers/new.json
   def new
     @printer = Printer.new
-      @region_id = params[:region_id]
+    @region_id = params[:region_id]
     @station_id = params[:station_id]
     @district_id = params[:district_id]
     #respond_to do |format|
@@ -41,7 +41,10 @@ class PrintersController < ApplicationController
   # GET /printers/1/edit
   def edit
     @printer = Printer.find(params[:id])
+  
+    @region_id = params[:region_id]
     @station_id = params[:station_id]
+    @district_id = params[:district_id]
   end
 
   # POST /printers
@@ -49,7 +52,7 @@ class PrintersController < ApplicationController
   def create
     @printer = Printer.new(params[:printer])
 
-     @region = Region.find_by_id(@printer.region_id)
+    @region = Region.find_by_id(@printer.region_id)
     @district = District.find_by_id(@printer.district_id)
     @station = Station.find_by_id(@printer.station_id)
 
@@ -72,10 +75,16 @@ class PrintersController < ApplicationController
   def update
     @printer = Printer.find(params[:id])
 
+    @region = Region.find_by_id(@printer.region_id)
+    @district = District.find_by_id(@printer.district_id)
+    @station = Station.find_by_id(@printer.station_id)
+
+    @node = @region || @district || @station #look for where we came
+
     respond_to do |format|
       if @printer.update_attributes(params[:printer])
         # redirect_to station_printer_path(@printer.station_id, @printer)
-        format.html { redirect_to station_printer_path(@printer.station_id, @printer), notice: 'Printer was successfully updated.' }
+        format.html { redirect_to @node, notice: 'Printer was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -88,11 +97,17 @@ class PrintersController < ApplicationController
 # DELETE /printers/1.json
   def destroy
     @printer = Printer.find(params[:id])
-    @station_id = @printer.station_id
+   
+    @region = Region.find_by_id(@printer.region_id)
+    @district = District.find_by_id(@printer.district_id)
+    @station = Station.find_by_id(@printer.station_id)
+
+    @node = @region || @district || @station #look for where we came
+
     @printer.destroy
 
     respond_to do |format|
-      format.html { redirect_to station_path(@station_id) }
+      format.html { redirect_to @node }
       format.json { head :no_content }
     end
   end

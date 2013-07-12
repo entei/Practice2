@@ -157,6 +157,6 @@
 <%= link_to 'Добавить СВТ', new_computer_path(:station_id => @station), :class => "btn" %>
 <%= link_to 'Добавить другое оборудование', new_device_path(:station_id => @station), :class => "btn" %>
 <%= link_to 'Добавить ПУ', new_printer_path(:station_id => @station), :class => "btn" %>
-<%= link_to 'Добавить Модем', new_modem_path(:station_id => @station) , :class => "btn"%>   </br>
-<%= link_to 'Редактировать', edit_station_path(@station) %>|
-<%= link_to 'Назад', stations_path %>
+<%= link_to 'Добавить Модем', new_modem_path(:station_id => @station) , :class => "btn"%> <br></br>
+<%= link_to 'Редактировать', edit_station_path(@station, :district_id => @district.id) %>|
+<%= link_to 'Назад', @district %>

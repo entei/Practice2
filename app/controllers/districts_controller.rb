@@ -43,6 +43,7 @@ class DistrictsController < ApplicationController
   # GET /districts/1/edit
   def edit
     @district = District.find(params[:id])
+    @region_id = @district.region_id
   end
 
   # POST /districts

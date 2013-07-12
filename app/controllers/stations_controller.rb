@@ -42,6 +42,7 @@ class StationsController < ApplicationController
   # GET /stations/1/edit
   def edit
     @station = Station.find(params[:id])
+    @district_id = params[:district_id]
   end
 
   # POST /stations

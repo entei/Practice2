@@ -42,5 +42,10 @@
 
 
 
-<%= link_to 'Редактировать', edit_modem_path(@modem) %> |
-<%= link_to 'Назад', station_path(@station_id) %>
+
+<% if @node %>
+  <%= link_to 'Назад', @node %>
+<% else %>
+  <%= link_to 'Назад', root_path %>
+<% end %>
+

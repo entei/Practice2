@@ -18,7 +18,7 @@
       	 <tr>
       	  <td><%= station.name %></td>
       	  <td class="ctrl"> <%= link_to "просмотр", station_path(station) %></td>
-          <td class="ctrl"><%= link_to "редактировать", edit_station_path(station) %></td>
+          <td class="ctrl"><%= link_to "редактировать", edit_station_path(station, :district_id => @district.id) %></td>
       	 </tr>
       	<% end %>
       	</tbody>
@@ -53,7 +53,7 @@
           <td> <%= modem.speed %> </td>
 
           <td class="ctrl"> <%= link_to "просмотр", modem_path(modem) %></td>
-          <td class="ctrl"><%= link_to "редактировать", edit_modem_path(modem) %></td>
+          <td class="ctrl"><%= link_to "редактировать", edit_modem_path(modem, :district_id => @district.id) %></td>
 
           </tr>
           </tbody>
@@ -88,7 +88,7 @@
           <td> <%= pr.printer_type %> </td>
 
           <td class="ctrl"> <%= link_to "просмотр", printer_path(pr) %></td>
-          <td class="ctrl"><%= link_to "редактировать", edit_printer_path(pr) %></td>
+          <td class="ctrl"><%= link_to "редактировать", edit_printer_path(pr, :district_id => @district.id) %></td>
 
           </tr>
           </tbody>
@@ -121,12 +121,12 @@
           <td> <%= c.comp_type %> </td>
 
           <td class="ctrl"> <%= link_to "просмотр", computer_path(c) %></td>
-          <td class="ctrl"><%= link_to "редактировать", edit_computer_path(c) %></td>
+          <td class="ctrl"><%= link_to "редактировать", edit_computer_path(c,  :district_id => @district.id) %></td>
 
           </tr>
           </tbody>
       <% end %>
-      
+      </table>
 <% end %>
 
 
@@ -157,14 +157,14 @@
           <td> <%= d.device_model %> </td>
 
           <td class="ctrl"> <%= link_to "просмотр", device_path(d) %></td>
-          <td class="ctrl"><%= link_to "редактировать", edit_device_path(d) %></td>
+          <td class="ctrl"><%= link_to "редактировать", edit_device_path(d,  :district_id => @district.id) %></td>
 
           </tr>
           </tbody>
       <% end %>
-      
+      </table>
 <% end %>
-</table>
+
 <p>
   <span class="badge badge-important"> </span> - закончен срок эксплуатации</p></br>
 <!----------------------->
@@ -174,5 +174,5 @@
 <%= link_to 'Добавить ПУ', new_printer_path(:district_id => @district_id), :class => "btn" %>
 <%= link_to 'Добавить Модем', new_modem_path(:district_id => @district_id) , :class => "btn"%>   
 <br></br>
-<%= link_to 'Редактировать', edit_region_path(@district.region_id) %>|
+<%= link_to 'Редактировать', edit_district_path(@district, :region_id => @district.region_id) %>|
 <%= link_to 'Назад', regions_path %>

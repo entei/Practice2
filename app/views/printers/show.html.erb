@@ -50,6 +50,8 @@
   <%= simple_format @printer.comment %>
 </p>
 
-
-<%= link_to 'Редактировать', edit_printer_path(@printer) %> |
-<%= link_to 'Назад', station_path(@station_id) %>
+<% if @node %>
+  <%= link_to 'Назад', @node %>
+<% else %>
+  <%= link_to 'Назад', root_path %>
+<% end %>
