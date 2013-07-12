@@ -33,11 +33,19 @@ $(document).ready(function(){
                                         <div>
                                         <a href="" class="spoiler_links"> ------------><%=  station.name %>   <%= link_to ' [детали]', station %></a>
                                           <div class="spoiler_body">
-                                          lol
+
+                                            <p>СВТ: <%= @computers.find_all{|a|a.station_id == station.id}.count  %> </p>
+                                            <p>Другое оборудование: <%= @devices.find_all{|a|a.station_id == station.id}.count  %> </p>
+                                            <p>ПУ: <%= @printers.find_all{|a|a.station_id == station.id}.count  %> </p>
+                                            <p>Модемы: <%= @modems.find_all{|a|a.station_id == station.id}.count  %> </p>
+
+
+
                                           </div>
                                         </div>
 
                                         <% end %>
+
 
                                   </div>
                                 </div>
@@ -64,9 +72,5 @@ $(document).ready(function(){
 <br />
 
 <%= link_to 'Новая область', new_region_path %>
-<<<<<<< HEAD
-
-=======
->>>>>>> f701e5e7f7d01d1e2bc02af5fd85c6b0036fb625
 <!--
 <%= link_to 'New Republic', new_republic_path %>-->
