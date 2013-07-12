@@ -1,9 +1,20 @@
 Practic::Application.routes.draw do
 
+<<<<<<< HEAD
+=======
+#<<<<<<< HEAD
+#=======
+>>>>>>> f701e5e7f7d01d1e2bc02af5fd85c6b0036fb625
   resources :republics
 
 
   resources :regions
+<<<<<<< HEAD
+=======
+#>>>>>>> 98c83a483764cc4da04ffed10591d17307c3eacc
+
+
+>>>>>>> f701e5e7f7d01d1e2bc02af5fd85c6b0036fb625
 
   get "static_pages/about"
 
