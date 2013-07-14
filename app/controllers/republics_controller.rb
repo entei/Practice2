@@ -6,6 +6,11 @@ class RepublicsController < ApplicationController
     @regions = Region.all
     @districts = District.all
     @stations = Station.all
+    @modems = Modem.all
+    @computers = Computer.all
+    @devices = Device.all
+    @printers = Printer.all
+
 
     respond_to do |format|
       format.html # index.html.erb
