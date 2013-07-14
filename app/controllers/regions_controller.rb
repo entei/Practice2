@@ -90,3 +90,8 @@ class RegionsController < ApplicationController
     end
   end
 end
+
+
+def report
+  @region = Region.find(params[:id])
+end

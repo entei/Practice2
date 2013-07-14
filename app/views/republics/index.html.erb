@@ -23,15 +23,15 @@ $(document).ready(function(){
 
           <% @regions.each do |region| %>
           <div>
-                      <a href="" class="spoiler_links"> --><%= region.name %>   область   <%= link_to ' [детали]', region %></a>
+                      <a href="" class="spoiler_links"> --><%= region.name %>   область   <%= link_to " ", region_path(region), class: "icon-eye-open" %></a>
                         <div class="spoiler_body">      
                                 <% @districts.find_all{|a|a.region_id == region.id}.each do |district| %>
                                 <div>
-                                <a href="" class="spoiler_links"> ------><%=  district.name %> район   <%= link_to ' [детали]', district %></a>
+                                <a href="" class="spoiler_links"> ------><%=  district.name %> район   <%= link_to '', district , class: "icon-eye-open"%></a>
                                   <div class="spoiler_body">
                                         <% @stations.find_all{|a|a.district_id == district.id}.each do |station| %>
                                         <div>
-                                        <a href="" class="spoiler_links"> ------------><%=  station.name %>   <%= link_to ' [детали]', station %></a>
+                                        <a href="" class="spoiler_links"> ------------><%=  station.name %>   <%= link_to '', station , class: "icon-eye-open"%></a>
                                           <div class="spoiler_body">
 
                                             <p>СВТ: <%= @computers.find_all{|a|a.station_id == station.id}.count  %> </p>
@@ -71,6 +71,6 @@ $(document).ready(function(){
 
 <br />
 
-<%= link_to 'Новая область', new_region_path %>
+<%= link_to 'Новая область', new_region_path, :class => "btn" %>
 <!--
 <%= link_to 'New Republic', new_republic_path %>-->

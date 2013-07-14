@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <legend>
-  <h2>
+  
     <b>Область:</b>
     <%= @region.name %>
-  </h2>
+    <%= link_to "", report_path(@region), class: "icon-print" %>
+  
 
  <h4>
  </h4>
@@ -187,16 +188,3 @@
 <%= link_to 'Редактировать', edit_region_path(@region) %>|
 <%= link_to 'Назад', root_path %>
 
-<<<<<<< HEAD
-
-=======
-<!--=======
-
-<p>
-  <b>Name:</b>
-  <%= @region.name %>
-</p>
-
-
-<%= link_to 'Edit', edit_region_path(@region) %> |
-<%= link_to 'Back', regions_path %>-->
