@@ -19,6 +19,7 @@
       	  <td><%= station.name %></td>
       	  <td class="ctrl"> <%= link_to "просмотр", station_path(station) %></td>
           <td class="ctrl"><%= link_to "редактировать", edit_station_path(station, :district_id => @district.id) %></td>
+            <td class="ctrl"><%= link_to 'удалить', station, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       	 </tr>
       	<% end %>
       	</tbody>
@@ -54,6 +55,7 @@
 
           <td class="ctrl"> <%= link_to "просмотр", modem_path(modem) %></td>
           <td class="ctrl"><%= link_to "редактировать", edit_modem_path(modem, :district_id => @district.id) %></td>
+            <td class="ctrl"><%= link_to 'удалить', modem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
           </tr>
           </tbody>
@@ -89,6 +91,7 @@
 
           <td class="ctrl"> <%= link_to "просмотр", printer_path(pr) %></td>
           <td class="ctrl"><%= link_to "редактировать", edit_printer_path(pr, :district_id => @district.id) %></td>
+            <td class="ctrl"><%= link_to 'удалить', pr, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
           </tr>
           </tbody>
@@ -122,6 +125,7 @@
 
           <td class="ctrl"> <%= link_to "просмотр", computer_path(c) %></td>
           <td class="ctrl"><%= link_to "редактировать", edit_computer_path(c,  :district_id => @district.id) %></td>
+            <td class="ctrl"><%= link_to 'удалить', c, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
           </tr>
           </tbody>
@@ -158,6 +162,7 @@
 
           <td class="ctrl"> <%= link_to "просмотр", device_path(d) %></td>
           <td class="ctrl"><%= link_to "редактировать", edit_device_path(d,  :district_id => @district.id) %></td>
+            <td class="ctrl"><%= link_to 'удалить', d, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
           </tr>
           </tbody>

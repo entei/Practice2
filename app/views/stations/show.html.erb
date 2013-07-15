@@ -39,6 +39,7 @@
 
           <td class="ctrl"> <%= link_to "просмотр", modem_path(modem) %></td>
           <td class="ctrl"><%= link_to "редактировать", edit_modem_path(modem, :station_id => @station.id) %></td>
+            <td class="ctrl"><%= link_to 'удалить', modem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
           </tr>
           </tbody>
@@ -74,6 +75,7 @@
 
           <td class="ctrl"> <%= link_to "просмотр", printer_path(pr) %></td>
           <td class="ctrl"><%= link_to "редактировать", edit_printer_path(pr, :station_id => @station.id) %></td>
+            <td class="ctrl"><%= link_to 'удалить', pr, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
           </tr>
           </tbody>
@@ -108,6 +110,7 @@
 
           <td class="ctrl"> <%= link_to "просмотр", computer_path(c) %></td>
           <td class="ctrl"><%= link_to "редактировать", edit_computer_path(c, :station_id => @station.id) %></td>
+            <td class="ctrl"><%= link_to 'удалить', c, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
           </tr>
           </tbody>
@@ -143,6 +146,7 @@
 
           <td class="ctrl"> <%= link_to "просмотр", device_path( d) %></td>
           <td class="ctrl"><%= link_to "редактировать", edit_device_path( d, :station_id => @station.id) %></td>
+            <td class="ctrl"><%= link_to 'удалить', d, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
           </tr>
           </tbody>

@@ -15,7 +15,7 @@
     </thead>
     <tbody>
       
-      
+      <% @districts.each do |district| %>
       <tr>
        <td><%= @region.name %></td>
        <td><%= @comp_count[5] %></td>
@@ -26,7 +26,7 @@
        <td><%= @comp_count[0] %></td>
        <td><%= @summ %></td>
       </tr>
-    
+      <% end %>
    
      </tbody>
  </table>

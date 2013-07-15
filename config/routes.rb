@@ -10,6 +10,7 @@ Practic::Application.routes.draw do
   get 'admin' => 'admin/index'
 
   get 'report/:id', to: "regions#report", as: 'report'
+  get 'rep_report' => "regions#RepublicReport"
 
 
   resources :users

@@ -84,10 +84,7 @@ class StationsController < ApplicationController
     @station = Station.find(params[:id])
     @station.destroy
 
-    respond_to do |format|
-      format.html { redirect_to stations_url }
-      format.json { head :no_content }
-    end
+redirect_to :back
   end
 
   def add_device

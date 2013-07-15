@@ -15,9 +15,11 @@
     </thead>
     <tbody>
       
-      
+      <% @regions.each do |region| %>
+      <% @comp_count = @republic_result[region.id] %>
+      <% @summ = @comp_count.reduce(:+) %>
       <tr>
-       <td><%= @region.name %></td>
+       <td><%= region.name %></td>
        <td><%= @comp_count[5] %></td>
        <td><%= @comp_count[4] %></td>
        <td><%= @comp_count[3] %></td>
@@ -26,7 +28,7 @@
        <td><%= @comp_count[0] %></td>
        <td><%= @summ %></td>
       </tr>
-    
+      <% end %>
    
      </tbody>
- </table>
+ </table> 

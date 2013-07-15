@@ -84,32 +84,25 @@ class RegionsController < ApplicationController
     @region = Region.find(params[:id])
     @region.destroy
 
-    respond_to do |format|
-      format.html { redirect_to regions_url }
-      format.json { head :no_content }
-    end
+redirect_to :back
   end
 
-
-
-  def report
-    @region_id = params[:region_id].to_i
-    @region = Region.find{|a| a.id == @region_id}
+def get_region_report(region_id)
     @computers = Computer.all
     @districts = District.all
     @allstations = Station.all
     @comp_count = Array.new(6) 
     @comp_count = [0,0,0,0,0,0]
 
-    @comp_count[0] += @computers.find_all{|a|a.region_id == @region_id}.find_all{|a| a.comp_class == "1" }.count
-    @comp_count[1] += @computers.find_all{|a|a.region_id == @region_id}.find_all{|a| a.comp_class == "2" }.count
-    @comp_count[2] += @computers.find_all{|a|a.region_id == @region_id}.find_all{|a| a.comp_class == "3" }.count
-    @comp_count[3] += @computers.find_all{|a|a.region_id == @region_id}.find_all{|a| a.comp_class == "4" }.count
-    @comp_count[4] += @computers.find_all{|a|a.region_id == @region_id}.find_all{|a| a.comp_class == "5" }.count
-    @comp_count[5] += @computers.find_all{|a|a.region_id == @region_id}.find_all{|a| a.comp_class == "6" }.count
+    @comp_count[0] += @computers.find_all{|a|a.region_id == region_id}.find_all{|a| a.comp_class == "1" }.count
+    @comp_count[1] += @computers.find_all{|a|a.region_id == region_id}.find_all{|a| a.comp_class == "2" }.count
+    @comp_count[2] += @computers.find_all{|a|a.region_id == region_id}.find_all{|a| a.comp_class == "3" }.count
+    @comp_count[3] += @computers.find_all{|a|a.region_id == region_id}.find_all{|a| a.comp_class == "4" }.count
+    @comp_count[4] += @computers.find_all{|a|a.region_id == region_id}.find_all{|a| a.comp_class == "5" }.count
+    @comp_count[5] += @computers.find_all{|a|a.region_id == region_id}.find_all{|a| a.comp_class == "6" }.count
 
 
-    @districts = @districts.find_all{|a| a.region_id == @region_id}
+    @districts = @districts.find_all{|a| a.region_id == region_id}
     @stations = Array.new
 
     @districts.each do |district| 
@@ -120,7 +113,7 @@ class RegionsController < ApplicationController
       @comp_count[4] += @computers.find_all{|a|a.district_id == district.id}.find_all{|a| a.comp_class == "5" }.count
       @comp_count[5] += @computers.find_all{|a|a.district_id == district.id}.find_all{|a| a.comp_class == "6" }.count
 
-      @comp_count[1]+=district.id
+      #@comp_count[1]+=district.id
       @stations+=@allstations.find_all{|a|a.district_id == district.id}
       
 
@@ -136,16 +129,30 @@ class RegionsController < ApplicationController
       @comp_count[5] += @computers.find_all{|a|a.station_id == station.id}.find_all{|a| a.comp_class == "6" }.count
 
     end
+    @comp_count
+end
 
-    @summ = 0
 
-    @comp_count.each do |count|
-      @summ += count
+  def report
+    @region_id = params[:region_id].to_i
+    @region = Region.find{|a| a.id == @region_id}
+    @comp_count = get_region_report @region_id
+    @summ = @comp_count.reduce(:+)
+  end
+
+  def RepublicReport
+    @regions = Region.all
+    @republic_result = Hash.new
+    @comp_count = Array.new
+
+    @regions.each do |region|
+      @republic_result[region.id] = get_region_report region.id
+     # @region_comp_count = get_region_report region
     end
 
-   
+    @republic = "Belarus"
 
-    
+    @comp_count = Array.new(6)
   end
 
 end

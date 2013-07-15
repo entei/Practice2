@@ -84,10 +84,10 @@ class DistrictsController < ApplicationController
   def destroy
     @district = District.find(params[:id])
     @district.destroy
-
-    respond_to do |format|
-      format.html { redirect_to districts_url }
-      format.json { head :no_content }
-    end
+    redirect_to :back
+    # respond_to do |format|
+    #   format.html { redirect_to redirect_to :back }
+    #   format.json { head :no_content }
+    # end
   end
 end

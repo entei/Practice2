@@ -105,9 +105,6 @@ class DevicesController < ApplicationController
     @device.destroy
 
 
-    respond_to do |format|
-      format.html { redirect_to @node }
-      format.json { head :no_content }
-    end
+redirect_to :back
   end
 end

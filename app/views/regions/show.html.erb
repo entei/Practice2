@@ -32,6 +32,7 @@
        <td><%= district.name %></td>
        <td class="ctrl"> <%= link_to "просмотр", district_path(district) %></td>
        <td class="ctrl"><%= link_to "редактировать", edit_district_path(district, :region_id => @region.id) %></td>
+         <td class="ctrl"><%= link_to 'удалить', district, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>
    
@@ -65,8 +66,9 @@
           <td><%= modem.modem_type %></td>
           <td> <%= modem.speed %> </td>
 
-          <td class="ctrl"> <%= link_to "просмотр", modem_path(modem) %></td>
+          <td class="ctrl"><%= link_to "просмотр", modem_path(modem) %></td>
           <td class="ctrl"><%= link_to "редактировать", edit_modem_path(modem, :region_id => @region.id) %></td>
+          <td class="ctrl"><%= link_to 'удалить', modem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
           </tr>
           </tbody>
@@ -102,6 +104,7 @@
 
           <td class="ctrl"> <%= link_to "просмотр", printer_path(pr) %></td>
           <td class="ctrl"><%= link_to "редактировать", edit_printer_path( pr,:region_id => @region.id) %></td>
+            <td class="ctrl"><%= link_to 'удалить', pr, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
           </tr>
           </tbody>
@@ -135,6 +138,7 @@
 
           <td class="ctrl"> <%= link_to "просмотр", computer_path(c) %></td>
           <td class="ctrl"><%= link_to "редактировать", edit_computer_path(c, :region_id => @region.id) %></td>
+            <td class="ctrl"><%= link_to 'удалить', c, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
           </tr>
           </tbody>
@@ -170,6 +174,7 @@
 
           <td class="ctrl"> <%= link_to "просмотр", device_path(d) %></td>
           <td class="ctrl"><%= link_to "редактировать", edit_device_path(d, :region_id => @region.id) %></td>
+            <td class="ctrl"><%= link_to 'удалить', d, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
           </tr>
           </tbody>
